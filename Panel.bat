@@ -1,4 +1,4 @@
-title Guardiangunz updater
+title Basic Admin Panel! 'NO MSSQL SUPPORT YET'
 @ECHO OFF
 mode con cols=170 lines=50
 
@@ -17,25 +17,41 @@ goto Update
 Set MySQL_off=Y
 
 :Update
-IF NOT EXIST Game mkdir Game
+IF NOT EXIST Basic mkdir Basic
 IF NOT EXIST Update204 git\bin\git.exe clone git://github.com/gangboy70/ragezone.git
-rmdir /s /q Game
-rmdir Test
+rmdir /s /q Basic
 cls
 pause
 GOTO main
 
 :main
+rem // replace PASSWORDHERE with a password you like for multiple passwords do this
+
+rem // If /i %M%==Password1 goto adminpanel
+rem // If /i %MM==Password2 goto adminpanel
+
+rem // End of multiple password instructions.
+
 SET /P M=Enter your password:
-If /i %M%==. Echo you did not enter a password
-If /i %M%==. Echo try again pls
-If /i %M%==. Pause
-If /i %M%==. Goto adminpanel
+if /i %M%==PASSWORDHERE Goto adminpanel
+Else
+Echo Wrong password %USERNAME%
+Pause
+goto main
+
 :main2
 rem fill this with your own code! this is empty space made for you!
 :finished
 
 :adminpanel
+
+rem // replace PASSWORDHERE with a password you like for multiple passwords do this
+
+rem // If /i %M%==Password1 goto adminpanel
+rem // If /i %MM==Password2 goto adminpanel
+
+rem // End of multiple password instructions.
+
 cls
 Echo Welcome %username%
 Echo.
@@ -43,11 +59,11 @@ Echo to the admin panel,
 Echo Please enter your password.
 
 SET /P M=Enter your password:
-If /i %M%==hansje cls
-If /i %M%==hansje echo Password OK!
-If /i %M%==hansje echo press a key to enter the panel
-If /i %M%==hansje pause>nul
-If /i %M%==hansje goto passwordok
+If /i %M%==PASSWORDHERE cls
+If /i %M%==PASSWORDHERE echo Password OK!
+If /i %M%==PASSWORDHERE echo press a key to enter the panel
+If /i %M%==PASSWORDHERE pause>nul
+If /i %M%==PASSWORDHERE goto passwordok
 Else
 cls
 Echo Wrong password entered %USERNAME%.
@@ -98,11 +114,11 @@ If /i %N%==. Echo you did not enter a password
 If /i %N%==. Echo try again pls
 If /i %N%==. Pause
 If /i %N%==. Goto adminpanel
-If /i %N%==hansje cls
-If /i %N%==hansje echo Password OK!
-If /i %N%==hansje echo press a key to leave the panel
-If /i %N%==hansje pause>nul
-If /i %N%==hansje goto adminpanel
+If /i %N%==PASSWORDHERE cls
+If /i %N%==PASSWORDHERE echo Password OK!
+If /i %N%==PASSWORDHERE echo press a key to leave the panel
+If /i %N%==PASSWORDHERE pause>nul
+If /i %N%==PASSWORDHERE goto adminpanel
 Else
 cls
 Echo Wrong password entered %USERNAME%.
